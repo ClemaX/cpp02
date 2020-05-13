@@ -24,11 +24,7 @@ public:
 	float toFloat(void) const;
 	int toInt(void) const;
 
-	friend std::ostream &operator<<(std::ostream &os, Fixed const &f)
-	{
-		os << f.toFloat();
-		return (os);
-	}
+	friend std::ostream &operator<<(std::ostream &os, Fixed const &f);
 };
 
 #endif

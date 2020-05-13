@@ -48,3 +48,8 @@ float Fixed::toFloat(void) const
 {
 	return (static_cast<float>(value) / (1 << bits));
 }
+
+std::ostream &operator<< (std::ostream &os, const Fixed &f)
+{
+	return (os << f.toFloat());
+}
