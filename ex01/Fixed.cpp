@@ -1,16 +1,25 @@
 #include "Fixed.hpp"
-#include <iostream>
 
 Fixed::Fixed(void)
+	: value(0)
 {
 	std::cout << "Default constructor called" << std::endl;
-	value = 0;
+}
+
+Fixed::Fixed(const int i)
+	: value(i << bits)
+{
+}
+
+Fixed::Fixed(const float f)
+	: value(f * (1 << bits))
+{
 }
 
 Fixed::Fixed(const Fixed& toCopy)
+	: value(toCopy.value)
 {
 	std::cout << "Assignation operator called" << std::endl;
-	value = toCopy.value;
 }
 
 Fixed::~Fixed(void)
@@ -28,4 +37,14 @@ void Fixed::setRawBits(int const raw)
 {
 	std::cout << "setRawBits member function called" << std::endl;
 	value = raw;
+}
+
+int Fixed::toInt(void) const
+{
+	return (roundf(toFloat()));
+}
+
+float Fixed::toFloat(void) const
+{
+	return (static_cast<float>(value) / (1 << bits));
 }
