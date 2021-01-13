@@ -1,8 +1,7 @@
-#ifndef FIXED_H
-# define FIXED_H
+#pragma once
 
-# include <iostream>
-# include <cmath> // Allowed: roundf
+#include <iostream>
+#include <cmath> // Allowed: roundf
 
 class Fixed
 {
@@ -11,20 +10,20 @@ private:
 	int value;
 
 public:
-	Fixed(void);
+	Fixed();
+	~Fixed();
+
 	Fixed(const int);
 	Fixed(const float);
+	Fixed(const Fixed &toCopy);
 
-	Fixed(const Fixed &);
-	~Fixed(void);
+	Fixed	&operator=(const Fixed &toAssign);
 
-	int getRawBits(void);
-	void setRawBits(int const raw);
+	int		getRawBits(void);
+	void	setRawBits(int const raw);
 
-	float toFloat(void) const;
-	int toInt(void) const;
+	float	toFloat(void) const;
+	int		toInt(void) const;
 
-	friend std::ostream &operator<<(std::ostream &os, Fixed const &f);
+	friend std::ostream	&operator<<(std::ostream &os, Fixed const &f);
 };
-
-#endif

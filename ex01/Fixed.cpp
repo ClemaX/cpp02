@@ -17,9 +17,16 @@ Fixed::Fixed(const float f)
 }
 
 Fixed::Fixed(const Fixed &toCopy)
-	: value(toCopy.value)
+{
+	std::cout << "Copy constructor called" << std::endl;
+	value = toCopy.value;
+}
+
+Fixed &Fixed::operator=(const Fixed &toAssign)
 {
 	std::cout << "Assignation operator called" << std::endl;
+	value = toAssign.value;
+	return (*this);
 }
 
 Fixed::~Fixed(void)
