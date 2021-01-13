@@ -1,8 +1,7 @@
-#ifndef FIXED_H
-# define FIXED_H
+#pragma once
 
-# include <iostream>
-# include <cmath> // Allowed: roundf
+#include <iostream>
+#include <cmath> // Allowed: roundf
 
 class Fixed
 {
@@ -11,40 +10,41 @@ private:
 	int value;
 
 public:
-	Fixed(void);
+	Fixed();
+	~Fixed();
+
 	Fixed(const int);
 	Fixed(const float);
 
-	Fixed(const Fixed &);
-	~Fixed(void);
+	Fixed(const Fixed &toCopy);
 
-	int getRawBits(void);
-	void setRawBits(int const raw);
+	Fixed	&operator=(const Fixed &toAssign);
 
-	float toFloat(void) const;
-	int toInt(void) const;
+	int		getRawBits(void);
+	void	setRawBits(int const raw);
 
-	friend std::ostream &operator<<(std::ostream &os, Fixed const &f);
+	float	toFloat(void) const;
+	int		toInt(void) const;
 
-	bool operator<(Fixed const &f) const;
-	bool operator>(Fixed const &f) const;
-	bool operator<=(Fixed const &f) const;
-	bool operator>=(Fixed const &f) const;
-	bool operator==(Fixed const &f) const;
-	bool operator!=(Fixed const &f) const;
+	bool	operator<(Fixed const &f) const;
+	bool	operator>(Fixed const &f) const;
+	bool	operator<=(Fixed const &f) const;
+	bool	operator>=(Fixed const &f) const;
+	bool	operator==(Fixed const &f) const;
+	bool	operator!=(Fixed const &f) const;
 
-	Fixed operator+(Fixed const &f) const;
-	Fixed operator-(Fixed const &f) const;
-	Fixed operator*(Fixed const &f) const;
-	Fixed operator/(Fixed const &f) const;
+	Fixed	operator+(Fixed const &f) const;
+	Fixed	operator-(Fixed const &f) const;
+	Fixed	operator*(Fixed const &f) const;
+	Fixed	operator/(Fixed const &f) const;
 
-	Fixed &operator++(void);
-	Fixed &operator--(void);
-	Fixed operator++(int);
-	Fixed operator--(int);
+	Fixed	&operator++(void);
+	Fixed	&operator--(void);
+	Fixed	operator++(int);
+	Fixed	operator--(int);
 };
 
-Fixed const &min(const Fixed &a, const Fixed &b);
-Fixed const &max(const Fixed &a, const Fixed &b);
+Fixed const	&min(const Fixed &a, const Fixed &b);
+Fixed const	&max(const Fixed &a, const Fixed &b);
 
-#endif
+std::ostream &operator<<(std::ostream &os, Fixed const &f);
