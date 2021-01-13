@@ -1,21 +1,28 @@
 #include "Fixed.hpp"
 #include <iostream>
 
-Fixed::Fixed(void)
+Fixed::Fixed()
+	: value(0)
 {
 	std::cout << "Default constructor called" << std::endl;
-	value = 0;
 }
 
-Fixed::Fixed(const Fixed& toCopy)
+Fixed::~Fixed()
 {
-	std::cout << "Assignation operator called" << std::endl;
+	std::cout << "Destructor called" << std::endl;
+}
+
+Fixed::Fixed(const Fixed &toCopy)
+{
+	std::cout << "Copy constructor called" << std::endl;
 	value = toCopy.value;
 }
 
-Fixed::~Fixed(void)
+Fixed &Fixed::operator=(const Fixed &toAssign)
 {
-	std::cout << "Destructor called" << std::endl;
+	std::cout << "Assignation operator called" << std::endl;
+	value = toAssign.value;
+	return (*this);
 }
 
 int Fixed::getRawBits(void)
