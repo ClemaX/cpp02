@@ -1,5 +1,4 @@
-#ifndef FIXED_H
-# define FIXED_H
+#pragma once
 
 class Fixed
 {
@@ -14,5 +13,3 @@ public:
 	int getRawBits(void);
 	void setRawBits(int const raw);
 };
-
-#endif
